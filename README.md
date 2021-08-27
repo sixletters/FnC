@@ -1,3 +1,3 @@
 # FnC
 
-Lets Create an improved version of instagram
+Lets a version of instagram categorized by memories and events
