@@ -20,6 +20,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
+with open('/Users/harrismaung/Desktop/photoProj/FnC/FnC/db_password.txt') as p:
+    DB_PASSWORD = p.read().strip()
 
 with open('/Users/harrismaung/Desktop/photoProj/FnC/FnC/secret_key.txt') as f:
     SECRET_KEY = f.read().strip()
@@ -40,7 +42,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'index',
+    'taggit',
+    'users'
 ]
+
+TAGGIT_CASE_INSENSITIVE = True
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -86,7 +92,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'fnc',
-        'USER': 'root',
+        'USER': DB_PASSWORD,
         'PASSWORD': '640110',
         'HOST': 'localhost',
         'PORT': '3306',
@@ -126,6 +132,11 @@ USE_L10N = True
 
 USE_TZ = True
 
+## django authentication
+LOGIN_URL = 'user:login'
+LOGIN_REDIRECT_URL = 'photo:list'
+LOGOUT_REDIRECT_URL = 'photo:list'
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
@@ -136,3 +147,9 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# URL that points to the physical storage where images are uploaded
+MEDIA_URL = '/media/'
+
+# The physical storage where the images will be uploaded
+MEDIA_ROOT = BASE_DIR / 'media/'
