@@ -156,7 +156,6 @@ MEDIA_URL = '/media/'
 # The physical storage where the images will be uploaded
 MEDIA_ROOT = BASE_DIR / 'media/'
 
-…
 # Configure Django App for Heroku.
 import django_heroku
 django_heroku.settings(locals())
