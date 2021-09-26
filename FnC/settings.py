@@ -43,10 +43,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'index',
     'taggit',
-    'users'
+    'users',
+    'crispy_forms'
 ]
 
 TAGGIT_CASE_INSENSITIVE = True
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -63,7 +65,7 @@ ROOT_URLCONF = 'FnC.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR/'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -153,3 +155,8 @@ MEDIA_URL = '/media/'
 
 # The physical storage where the images will be uploaded
 MEDIA_ROOT = BASE_DIR / 'media/'
+
+…
+# Configure Django App for Heroku.
+import django_heroku
+django_heroku.settings(locals())

@@ -2,7 +2,7 @@ from django.urls import path
 
 from django.contrib.auth.views import LogoutView
 
-from .view import SignUpView, CustomLoginView
+from .views import SignUpView, CustomLoginView
 
 app_name = 'user'
 
